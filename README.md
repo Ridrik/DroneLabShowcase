@@ -21,7 +21,11 @@ Explore some highlights of DroneLab in action:
 - Telemetry plots during flight.
 - Replay and analysis videos.
 
-For interactive demos, see the GitHub Pages showcase (coming soon).
+## Live Demo
+
+A live showcase of DroneLab, including media, telemetry, and replay features, is available here:
+
+[DroneLab Showcase](https://ridrik.github.io/DroneLabShowcase/)
 
 ## Contact
 
