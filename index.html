@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroneLab Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>DroneLab</h1>
+            <p>Simulate, visualize, and replay autonomous drone flights with live telemetry.</p>
+
+            <video autoplay muted loop playsinline class="hero-video" poster="images/hero-poster.png">
+                <source src="videos/hero.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <a href="#features" class="btn">See Features</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About</h2>
+        <p>
+            DroneLab is a C++ based simulator and visualizer tool for drone guidance, navigation, and control (GNC).
+            It supports live and replay sessions with full telemetry history, plots, and visualizations.
+        </p>
+        <ul class="about-list">
+            <li>GNC core: rigid-body dynamics with RK4 integration, discrete EKF for state estimation, and cascade
+                PID
+                controllers</li>
+            <li>User friendly configurable editor for controllers, drone parameters, sensors, estimators, rules,
+                environments,
+                waypoints and more</li>
+            <li>Waypoint following and return-to-launch modes, with more flight modes planned</li>
+            <li>Simulation control: pause, slow or speed up even on a live session</li>
+            <li>Interactive features: mouse hover and add waypoints dynamically, or toggle sensors On/Off</li>
+            <li>Visual outputs: plots, telemetry panels, minimap, 3D trajectory trails, ghost drone estimates,
+                covariance ellipsoids, and more</li>
+            <li>Automatic saving and replay of runs in near-original detail</li>
+        </ul>
+        <p class="about-intro">
+            This tool is currently in development. If you are interested in previews, demonstrations, or
+            collaboration,
+            please get in touch:
+        </p>
+        <p class="contact">
+            📧 <a href="mailto:rodrigo.csrosa@proton.me">rodrigo.csrosa@proton.me</a><br>
+            💼 <a href="https://www.linkedin.com/in/rodrigo-rosa-4547b115b/" target="_blank">LinkedIn</a>
+        </p>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <video autoplay muted loop playsinline class="feature-video">
+                    <source src="gifs/live_waypoint_follow.mp4" type="video/mp4">
+                </video>
+                <h3>Waypoint Navigation</h3>
+                <p>Autonomous drones following configured trails accurately.</p>
+            </div>
+            <div class="feature">
+                <img src="gifs/editor.gif" alt="Editor">
+                <h3>Configurable Editor</h3>
+                <p>Load, save, and tweak flight parameters easily.</p>
+            </div>
+            <div class="feature">
+                <video autoplay muted loop playsinline class="feature-video">
+                    <source src="gifs/waypoint_add.mp4" type="video/mp4">
+                </video>
+                <h3>Add waypoints interactively</h3>
+                <p>Add waypoints on screen during a live session</p>
+            </div>
+            <div class="feature">
+                <video autoplay muted loop playsinline class="feature-video">
+                    <source src="gifs/sensor_toggle.mp4" type="video/mp4">
+                </video>
+                <h3>Toggle sensors ON/OFF</h3>
+                <p>Enable or Disable GPS, Magnetometer live</p>
+            </div>
+            <div class="feature">
+                <video autoplay muted loop playsinline class="feature-video">
+                    <source src="gifs/replay_forward.mp4" type="video/mp4">
+                </video>
+                <h3>Replay & Telemetry</h3>
+                <p>Replay past runs with telemetry plots and flight paths.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Media Gallery</h2>
+        <div class="media-grid">
+            <figure>
+                <a href="images/end_simulation_trail_wind.png" class="lightbox" data-type="image">
+                    <img src="images/end_simulation_trail_wind.png" alt="End of simulation with trail and wind">
+                </a>
+                <figcaption>End of simulation with trail and wind</figcaption>
+            </figure>
+            <figure>
+                <a href="images/mid_run_ellipsoid.png" class="lightbox" data-type="image">
+                    <img src="images/mid_run_ellipsoid.png" alt="Position covariance ellipsoid">
+                </a>
+                <figcaption>Position covariance ellipsoid</figcaption>
+            </figure>
+            <figure>
+                <a href="videos/replay.mp4" class="lightbox" data-type="video">
+                    <img src="images/replay.png" alt="Demo video">
+                </a>
+                <figcaption>Replay & Telemetry Video</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImage" style="display:none;">
+        <video class="lightbox-video" id="lightboxVideo" controls autoplay loop style="display:none;"></video>
+        <div id="lightboxCaption"></div>
+    </div>
+
+    <footer>
+        <p>© 2025 Rodrigo Rosa. DroneLab Showcase. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+        const lightboxLinks = document.querySelectorAll('.lightbox');
+        const modal = document.getElementById('lightboxModal');
+        const modalImg = document.getElementById('lightboxImage');
+        const modalVideo = document.getElementById('lightboxVideo');
+        const captionText = document.getElementById('lightboxCaption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        lightboxLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const type = this.dataset.type;
+                const src = this.href;
+
+                modal.style.display = 'block';
+                captionText.innerText = this.querySelector('img').alt;
+
+                if (type === 'image' || type === 'gif') {
+                    modalVideo.style.display = 'none';
+                    modalVideo.pause();
+                    modalImg.style.display = 'block';
+                    modalImg.src = src;
+                } else if (type === 'video') {
+                    modalImg.style.display = 'none';
+                    modalVideo.style.display = 'block';
+                    modalVideo.src = src;
+                    modalVideo.play();
+                }
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalVideo.pause();
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalVideo.pause();
+            }
+        });
+    </script>
+</body>
+
+</html>
