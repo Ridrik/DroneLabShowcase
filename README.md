@@ -8,9 +8,10 @@ DroneLab is a C++ based simulation and visualization tool for autonomous drones.
 - Flight Modes: Waypoint following, return-to-launch (RTL), with additional modes planned.
 - Simulation Control: Pause, slow and speed up simulation; Switch view between drone orbit mode or free mode
 - Live interaction: add waypoints on screen, disable/enable sensors such as GPS and Magnetometer.
-- Visual Outputs: Real-time and replayable telemetry, plots, minimap, 3D trajectory trails, ghost drone estimates, and covariance ellipsoids.
-- GNC Core: Rigid-body dynamics with RK4 integration, discrete EKF for state estimation, and cascade PID controllers.
-- Replay & Storage: Runs are automatically saved and can be replayed nearly identically.
+- Visual Outputs: Real-time and replayable telemetry, plots, minimap, 3D trajectory trails, ghost drone estimates, and more.
+- GNC & Flight Controller Core: Rigid-body dynamics with RK4 integration, discrete EKF for state estimation, and cascade PID controllers.
+- Replay & Storage: Load any previous run, and replay any moment as if it was live.
+- Planned Integrations: Software-in-the-loop with Mavlink (UDP), ROS2 nodes
 
 ## Media Gallery
 
