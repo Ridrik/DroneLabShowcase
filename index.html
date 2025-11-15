@@ -76,10 +76,6 @@
             collaboration,
             please get in touch:
         </p>
-        <p class="contact">
-            📧 <a href="mailto:rodrigo.csrosa@proton.me">rodrigo.csrosa@proton.me</a><br>
-            💼 <a href="https://www.linkedin.com/in/rodrigo-rosa-4547b115b/" target="_blank">LinkedIn</a>
-        </p>
     </section>
 
     <!-- Features Section -->
@@ -153,6 +149,31 @@
         <div id="lightboxCaption"></div>
     </div>
 
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <form id="contact-form" action="https://formspree.io/f/mgvrzyql" method="POST">
+            <label>
+                Your Name:
+                <input type="text" name="name" required>
+            </label>
+
+            <label>
+                Your Email:
+                <input type="email" name="email" required>
+            </label>
+
+            <label>
+                Message:
+                <textarea name="message" rows="5" required></textarea>
+            </label>
+
+            <button type="submit">Send Message</button>
+
+            <p id="form-status"></p>
+        </form>
+    </section>
+
     <footer>
         <p>© 2025 Rodrigo Rosa. DroneLab Showcase. All rights reserved.</p>
     </footer>
@@ -198,6 +219,31 @@
             if (e.target === modal) {
                 modal.style.display = 'none';
                 modalVideo.pause();
+            }
+        });
+    </script>
+
+    <script>
+        const form = document.getElementById("contact-form");
+        const statusEl = document.getElementById("form-status");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: data,
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (response.ok) {
+                statusEl.textContent = "Thanks! Your message has been sent.";
+                form.reset();
+            } else {
+                statusEl.textContent = "Oops! Something went wrong. Please try again.";
             }
         });
     </script>
