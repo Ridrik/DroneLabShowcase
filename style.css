@@ -286,7 +286,9 @@ figcaption {
 }
 
 .social-links {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 12px;             
     margin-bottom: 20px;
     font-size: 1.1rem;
 }
