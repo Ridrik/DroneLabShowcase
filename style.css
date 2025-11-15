@@ -273,6 +273,43 @@ figcaption {
     color: #bbb;
 }
 
+#contact-form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 12px;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+#contact-form button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #005fa3;
+}
+
+#form-status {
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+
+
 /* Footer */
 footer {
     text-align: center;
