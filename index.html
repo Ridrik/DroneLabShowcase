@@ -41,12 +41,15 @@
             <h1>DroneLab</h1>
             <p>Simulate, visualize, and replay autonomous drone flights with live telemetry.</p>
 
-            <video autoplay muted loop playsinline class="hero-video" poster="images/hero-poster.png">
+            <video autoplay muted loop playsinline class="hero-video" poster="images/hero-poster.jpg">
                 <source src="videos/hero.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
 
-            <a href="#features" class="btn">See Features</a>
+            <div class="hero-buttons">
+                <a href="#downloads" class="btn primary">Download</a>
+                <a href="#features" class="btn secondary">See Features</a>
+            </div>
         </div>
     </header>
 
@@ -80,6 +83,44 @@
             collaboration,
             please get in touch (contact details at the end).
         </p>
+    </section>
+
+    <section id="downloads" class="downloads-section">
+        <h2>Download DroneLab</h2>
+        <p class="download-subtitle">Latest pre-release demo builds for your platform</p>
+
+        <div class="download-grid">
+
+            <!-- Windows -->
+            <div class="download-card" id="windows-card">
+                <div class="platform-header">
+                    <img src="icons/windows.svg" class="platform-icon" alt="Windows logo">
+                    <span class="platform-title">Windows 10 / 11</span>
+                </div>
+                <div class="download-options">
+                    <select id="windows-format" class="download-select">
+                        <option value=".exe">Windows Installer (.exe)</option>
+                        <option value=".zip">Portable Package (.zip)</option>
+                    </select>
+                    <button class="download-btn" id="windows-download">Download</button>
+                </div>
+            </div>
+            <!-- Linux -->
+            <div class="download-card" id="linux-card">
+                <div class="platform-header">
+                    <img src="icons/linux-svgrepo-com.svg" class="platform-icon" alt="Linux logo">
+                    <span class="platform-title">Linux</span>
+                </div>
+                <div class="download-options">
+                    <select id="linux-format" class="download-select">
+                        <option value=".AppImage">AppImage (.AppImage)</option>
+                        <option value=".tar.gz">Archive (.tar.gz)</option>
+                    </select>
+                    <button class="download-btn" id="linux-download">Download</button>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <!-- Features Section -->
@@ -254,6 +295,37 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const REPO = "Ridrik/DroneLab-Demo";
+
+            async function getLatestAssetUrl(extension) {
+                const apiUrl = `https://api.github.com/repos/Ridrik/DroneLab-Demo/releases`;
+                const response = await fetch(apiUrl).then(r => r.json());
+                const data = response[0]
+
+                // Find asset that ends with the chosen extension
+                const asset = data.assets.find(a => a.name.endsWith(extension));
+                return asset ? asset.browser_download_url : null;
+            }
+
+            document.getElementById("windows-download").addEventListener("click", async () => {
+                const ext = document.getElementById("windows-format").value;
+                console.log("Selected extension:", ext);
+                const url = await getLatestAssetUrl(ext);
+                if (url) window.location = url;
+                else alert("No matching Windows asset found.");
+            });
+
+            document.getElementById("linux-download").addEventListener("click", async () => {
+                const ext = document.getElementById("linux-format").value;
+                const url = await getLatestAssetUrl(ext);
+                if (url) window.location = url;
+                else alert("No matching Linux asset found.");
+            });
+        });
+    </script>
+
 </body>
 
 </html>

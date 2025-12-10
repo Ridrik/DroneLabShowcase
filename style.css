@@ -42,7 +42,8 @@ p, ul, li {
 }
 
 .hero h1 {
-    color: gold
+    font-size: 2.6rem;
+    color: rgb(255, 217, 0)
 }
 
 .hero-content {
@@ -69,6 +70,116 @@ p, ul, li {
     display: block;
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn.primary {
+    background: gold;
+    color: #012555;
+}
+
+.btn.secondary {
+    background: white;
+    color: #004aad;
+}
+
+.downloads-section {
+    padding: 80px 20px;
+    background: linear-gradient(180deg,#01193a, #164f87);
+    color: whitesmoke;
+    text-align: center;
+}
+
+.downloads-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: gold;
+}
+
+.download-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.download-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.download-card  {
+    background: whitesmoke;
+    color: black;
+    padding: 25px 30px;
+    border-radius: 14px;
+    width: 260px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s;
+}
+
+.download-card:hover {
+    transform: translateY(-4px);
+}
+
+.platform-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px; /* <-- space below the line */
+}
+
+.platform-icon {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+.platform-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.download-card:hover .platform-icon {
+    transform: scale(1.08);
+}
+
+.download-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.download-select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+.download-btn {
+    background: linear-gradient(180deg, #1c4fa4, #0c2d6b);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.download-btn:hover {
+    opacity: 0.85;
+}
+
+
 .btn {
     display: inline-block;
     margin-top: 15px;
@@ -87,7 +198,7 @@ p, ul, li {
 
 /* About Section */
 #about {
-    padding: 60px 20px;
+    padding: 60px 50px;
     text-align: center;
     background-color: #f7f9fc;
 }
