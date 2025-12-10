@@ -432,6 +432,8 @@ figcaption {
 #contact-form button {
     padding: 10px;
     font-size: 1rem;
+    align-self: center;
+    width: 70%;
     background-color: #1c61bd;
     color: white;
     border: none;
