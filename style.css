@@ -101,7 +101,29 @@ p, ul, li {
 .download-subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+}
+
+.downloads-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    color: whitesmoke;
+}
+
+.downloads-section .demo_repo {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    padding: 10px 20px;
+    background-color: rgb(206, 205, 215);
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s;
+}
+
+.demo_repo:hover {
+    transform: translateY(-4px);
 }
 
 .download-grid {
@@ -109,6 +131,7 @@ p, ul, li {
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
+    margin-bottom: 50px;
 }
 
 .download-card  {
